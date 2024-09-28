@@ -2,6 +2,7 @@
 -----------
 This project was inspired by the following two papers, I applied them to underwater target detection in remote sensing hyperspectral imagery. Due to time constraints, this work was not published.
 > [1] *J. Jiao, Z. Gong and P. Zhong, Triplet Spectralwise Transformer Network for Hyperspectral Target Detection, in IEEE Transactions on Geoscience and Remote Sensing, vol. 61, pp. 1-17, 2023.*
+> 
 > [2] *D. Hong et al., SpectralFormer: Rethinking Hyperspectral Image Classification With Transformers, in IEEE Transactions on Geoscience and Remote Sensing, vol. 60, pp. 1-15, 2022.*
 
 Hyperspectral underwater target detection is a promising and challenging task in remote sensing image processing. Existing methods face significant challenges when adapting to real nearshore environments, where cluttered backgrounds hinder the extraction of target signatures and exacerbate signal distortion.
