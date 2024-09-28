@@ -91,7 +91,7 @@ Training for new dataset need to generate NDWI mask (If land areas are included)
 1. Modify `TPL.py`, using the trained weights of the nonlinear mapping network from the first stage.
 2. Run ` python TPL.py `
 
-> The trained weights are all stored in the result_* folders.
+> The trained weights and results are all stored in the result_* folders.
 
 
 -----------------
