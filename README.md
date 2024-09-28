@@ -43,6 +43,7 @@ Our proposed method demonstrates a good capability for target feature separation
 Due to the difficulty of deploying underwater targets and the high cost of data collection, research in this area has predominantly relied on simulated data. To advance the study of underwater target detection in real-world scenarios, we used a dataset of real underwater scenes and conducted experiments on this data. The deployed underwater target is an iron plate, and the target's prior spectral data were collected onshore.
 
 > The River Scene data sets was captured by Headwall Nano-Hyperspec imaging sensor equipped on DJI Matrice 300 RTK unmanned aerial vehicle, and it was collected at the Qianlu Lake Reservoir in Liuyang (28◦18′40.29′′ N, 113◦21′16.23′′ E), Hunan Province, China on July 31, 2021.
+> 
 > The Ningxiang data set was captured using the same equipment, and it was collected at the Meihua Reservoir, Ningxiang city (27◦ 56’59.72” N, 112◦ 8’50.45” E), Hunan Province , China on January 10, 2024.
 
 
