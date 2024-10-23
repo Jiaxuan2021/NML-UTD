@@ -67,45 +67,45 @@ Our proposed method demonstrates a good capability for target feature separation
 </head>
 <body>
 
-<p>Suppose \( x_p \), \( x_n \), and \( x_a \) are positive samples, negative samples, and anchor samples, respectively. The cosine similarity between them is represented as:</p>
+<p>Suppose $$ x_p $$, $$ x_n $$, and $$ x_a $$ are positive samples, negative samples, and anchor samples, respectively. The cosine similarity between them is represented as:</p>
 
-\[
+$$
 d_{pn} = \text{cosine\_similarity}(x_p, x_n) = \frac{x_p \cdot x_n}{\|x_p\| \|x_n\|}
-\]
+$$
 
-\[
+$$
 d_{pa} = \text{cosine\_similarity}(x_p, x_a) = \frac{x_p \cdot x_a}{\|x_p\| \|x_a\|}
-\]
+$$
 
-\[
+$$
 d_{an} = \text{cosine\_similarity}(x_a, x_n) = \frac{x_a \cdot x_n}{\|x_a\| \|x_n\|}
-\]
+$$
 
-<p>The improved triplet loss is divided into two parts; the first part is the standard triplet loss. A larger margin, denoted as \( \text{margin2} \), is introduced to ensure that the similarity between the positive sample and the anchor is significantly higher than the similarity between the positive sample or the anchor and the negative sample:</p>
+<p>The improved triplet loss is divided into two parts; the first part is the standard triplet loss. A larger margin, denoted as margin2, is introduced to ensure that the similarity between the positive sample and the anchor is significantly higher than the similarity between the positive sample or the anchor and the negative sample:</p>
 
-\[
+$$
 \text{Loss}_{Triplet1} =  \max(d_{pn}, d_{an} - d_{pa} + \text{margin2})
-\]
+$$
 
-<p>The second part of the loss is composed of \( \text{Loss}_{ap} \), \( \text{Loss}_{an} \), and \( \text{Loss}_{pn} \):</p>
+<p>The second part of the loss is composed of $$Loss_ap$$, $$Loss_an$$, and $$Loss_pn$$:</p>
 
-\[
+$$
 \text{Loss}_{ap} = \max(0, d_{pa} - \text{margin1} + \epsilon)
-\]
+$$
 
-<p>This term aims to increase the lower bound of the similarity between the positive sample and the anchor by setting a small margin, denoted as \( \text{margin1} \):</p>
+<p>This term aims to increase the lower bound of the similarity between the positive sample and the anchor by setting a small margin, denoted as margin1:</p>
 
-\[
+$$
 \text{Loss}_{an} = \max(0, \text{margin2} - d_{an})
-\]
+$$
 
-\[
+$$
 \text{Loss}_{pn} = \max(0, \text{margin2} - d_{pn})
-\]
+$$
 
-\[
+$$
 \text{Loss}_{Triplet2} =  \text{Loss}_{ap} + \text{Loss}_{an} + \text{Loss}_{pn}
-\]
+$$
 
 <p>In summary, the improved triplet loss function effectively captures the complex relationships between samples by considering the relative similarities among the positive sample, anchor, and negative sample, while imposing distinct constraints and margins on these similarities. This approach is particularly effective in situations where subtle differences within the positive sample set are challenging to distinguish.</p>
 
