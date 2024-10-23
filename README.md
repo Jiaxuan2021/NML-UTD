@@ -28,16 +28,89 @@ Hyperspectral underwater target detection requires identifying pixels containing
 Our proposed method demonstrates a good capability for target feature separation.
 
 <!-- First Row -->
-<p align="center">
-  <img src="/pics/scene1_before_training.png" alt="Feature 1" title="River scene 1 before training" width="40%">
-  <img src="/pics/scene1_after_training.png" alt="Feature 2" title="River scene 1 after training" width="40%">
-</p>
+<table style="border-collapse: collapse; border: none;">
+  <tr>
+    <td align="center">
+      <img src="/pics/scene1_before_training.png" alt="Feature 1" title="River scene 1 before training" width="80%">
+      <br><small>(a) Before Training</small>
+    </td>
+    <td align="center">
+      <img src="/pics/scene1_after_training.png" alt="Feature 2" title="River scene 1 after training" width="80%">
+      <br><small>(b) After Training</small>
+    </td>
+  </tr>
+</table>
 
 <!-- Second Row -->
-<p align="center">
-  <img src="/pics/scene2_before_training.png" alt="Feature 1" title="River scene 2 before training" width="40%">
-  <img src="/pics/scene2_after_training.png" alt="Feature 2" title="River scene 2 after training" width="40%">
-</p>
+<table>
+  <tr>
+    <td align="center">
+      <img src="/pics/scene2_before_training.png" alt="Feature 1" title="River scene 2 before training" width="80%">
+      <br><small>(c) Before Training</small>
+    </td>
+    <td align="center">
+      <img src="/pics/scene2_after_training.png" alt="Feature 2" title="River scene 2 after training" width="80%">
+      <br><small>(d) After Training</small>
+    </td>
+  </tr>
+</table>
+
+***
+
+### Improved Triplet Loss
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+Suppose $x_p$, $x_n$, $x_a$ are positive samples, negative samples and anchor samples respectively. The cosine similarity between them is represented as
+
+$$
+d_{pn}=\text{cosine\_similarity}(x_p, x_n) = \frac{x_p \cdot x_n}{\|x_p\| \|x_n\|}
+$$
+
+$$
+d_{pa}=\text{cosine\_similarity}(x_p, x_a) = \frac{x_p \cdot x_a}{\|x_p\| \|x_a\|}
+$$
+
+$$
+d_{an}=\text{cosine\_similarity}(x_a, x_n) = \frac{x_a \cdot x_n}{\|x_a\| \|x_n\|}
+$$
+
+The improved triplet loss is divided into two parts; the first part is the standard triplet loss. A larger margin, denoted as margin2, is introduced to ensure that the similarity between the positive sample and the anchor is significantly higher than the similarity between the positive sample or the anchor and the negative sample.
+
+$$
+\text{Loss}_{Triplet1} =  \max(d_{pn}, d_{an} - d_{pa} + \text{margin2} )
+$$
+
+The second part of the loss is composed of $Loss_{ap}$, $Loss_{an}$ and $Loss_{pn}$
+
+$$
+\text{Loss}_{ap} = \max(0, d_{pa} - \text{margin1} + \epsilon)
+$$
+
+This term aims to increase the lower bound of the similarity between the positive sample and the anchor by setting a small margin, denoted as margin1.
+
+$$
+\text{Loss}_{an} = \max(0, \text{margin2} - d_{an})
+$$
+
+$$
+\text{Loss}_{pn} = \max(0, \text{margin2} - d_{pn})
+$$
+
+$$
+\text{Loss}_{Triplet2} =  \text{Loss}_{ap} + \text{Loss}_{an} + \text{Loss}_{pn}
+$$
+
+In summary, the improved triplet loss function effectively captures the complex relationships between samples by considering the relative similarities among the positive sample, anchor, and negative sample, while imposing distinct constraints and margins on these similarities. This approach is particularly effective in situations where subtle differences within the positive sample set are challenging to distinguish.
+
+</body>
+</html>
+
+***
 
 ### Dataset
 Due to the difficulty of deploying underwater targets and the high cost of data collection, research in this area has predominantly relied on simulated data. To advance the study of underwater target detection in real-world scenarios, we used a dataset of real underwater scenes and conducted experiments on this data. The deployed underwater target is an iron plate, and the target's prior spectral data were collected onshore.
@@ -47,7 +120,7 @@ Due to the difficulty of deploying underwater targets and the high cost of data 
 > The Ningxiang data set was captured using the same equipment, and it was collected at the Meihua Reservoir, Ningxiang city (27◦ 56’59.72” N, 112◦ 8’50.45” E), Hunan Province , China on January 10, 2024.
 
 
-- **Download the datasets from [*here*](https://drive.google.com/file/d/19l5nimXL4ONjB6Qhl-gJaYX4sFb3zibw/view?usp=sharing), put it under the folder <u>dataset</u>.**
+**Download the datasets from [*here*](https://drive.google.com/file/d/19l5nimXL4ONjB6Qhl-gJaYX4sFb3zibw/view?usp=sharing), put it under the folder <u>dataset</u>.**
   
 - Dataset format: mat
 
