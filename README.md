@@ -61,13 +61,13 @@ Our proposed method demonstrates a good capability for target feature separation
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript" async
+    <!-- <script type="text/javascript" async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
+    </script> -->
 </head>
 <body>
 
-<p>Suppose $$ x_p $$, $$ x_n $$, and $$ x_a $$ are positive samples, negative samples, and anchor samples, respectively. The cosine similarity between them is represented as:</p>
+Suppose $ x_p $, $ x_n $, and $ x_a $ are positive samples, negative samples, and anchor samples, respectively. The cosine similarity between them is represented as:
 
 $$
 d_{pn} = \text{cosine\_similarity}(x_p, x_n) = \frac{x_p \cdot x_n}{\|x_p\| \|x_n\|}
@@ -87,7 +87,7 @@ $$
 \text{Loss}_{Triplet1} =  \max(d_{pn}, d_{an} - d_{pa} + \text{margin2})
 $$
 
-<p>The second part of the loss is composed of $$Loss_ap$$, $$Loss_an$$, and $$Loss_pn$$:</p>
+The second part of the loss is composed of $Loss_{ap}$, $Loss_{an}$ and $Loss_{pn}$:
 
 $$
 \text{Loss}_{ap} = \max(0, d_{pa} - \text{margin1} + \epsilon)
