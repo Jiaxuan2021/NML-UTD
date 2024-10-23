@@ -1,3 +1,35 @@
+<html>
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        "HTML-CSS": { fonts: ["TeX"] }
+      }
+    });
+    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+  </script>
+  <script
+    type="text/javascript"
+    async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"
+  ></script>
+
+<\html>
 # Endmember-Guided Nonlinear Mapping Learning for Hyperspectral Nearshore Underwater Target Detection
 -----------
 This project was inspired by the following two papers, I applied them to underwater target detection in remote sensing hyperspectral imagery. Due to time constraints, this work was not published.
@@ -100,16 +132,13 @@ $$
 
 In summary, the improved triplet loss function effectively captures the complex relationships between samples by considering the relative similarities among the positive sample, anchor, and negative sample, while imposing distinct constraints and margins on these similarities. This approach is particularly effective in situations where subtle differences within the positive sample set are challenging to distinguish.
 
-</body>
-</html>
-
 
 ***
 
 ### Dataset
 Due to the difficulty of deploying underwater targets and the high cost of data collection, research in this area has predominantly relied on simulated data. To advance the study of underwater target detection in real-world scenarios, we used a dataset of real underwater scenes and conducted experiments on this data. The deployed underwater target is an iron plate, and the target's prior spectral data were collected onshore.
 
-> The River Scene data sets was captured by Headwall Nano-Hyperspec imaging sensor equipped on DJI Matrice 300 RTK unmanned aerial vehicle, and it was collected at the Qianlu Lake Reservoir in Liuyang (28◦18′40.29′′ N, 113◦21′16.23′′ E), Hunan Province, China on July 31, 2021.
+> The River Scene data sets were captured by Headwall Nano-Hyperspec imaging sensor equipped on DJI Matrice 300 RTK unmanned aerial vehicle, and it was collected at the Qianlu Lake Reservoir in Liuyang (28◦18′40.29′′ N, 113◦21′16.23′′ E), Hunan Province, China on July 31, 2021.
 > 
 > The Ningxiang data set was captured using the same equipment, and it was collected at the Meihua Reservoir, Ningxiang city (27◦ 56’59.72” N, 112◦ 8’50.45” E), Hunan Province , China on January 10, 2024.
 
