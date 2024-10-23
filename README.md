@@ -31,11 +31,11 @@ Our proposed method demonstrates a good capability for target feature separation
 <table style="border-collapse: collapse; border: none;">
   <tr>
     <td align="center">
-      <img src="/pics/scene1_before_training.png" alt="Feature 1" title="River scene 1 before training" width="80%">
+      <img src="/pics/scene1_before_training.png" alt="Feature 1" title="River scene 1 before training" width="85%">
       <br><small>(a) Before Training</small>
     </td>
     <td align="center">
-      <img src="/pics/scene1_after_training.png" alt="Feature 2" title="River scene 1 after training" width="80%">
+      <img src="/pics/scene1_after_training.png" alt="Feature 2" title="River scene 1 after training" width="85%">
       <br><small>(b) After Training</small>
     </td>
   </tr>
@@ -45,11 +45,11 @@ Our proposed method demonstrates a good capability for target feature separation
 <table>
   <tr>
     <td align="center">
-      <img src="/pics/scene2_before_training.png" alt="Feature 1" title="River scene 2 before training" width="80%">
+      <img src="/pics/scene2_before_training.png" alt="Feature 1" title="River scene 2 before training" width="85%">
       <br><small>(c) Before Training</small>
     </td>
     <td align="center">
-      <img src="/pics/scene2_after_training.png" alt="Feature 2" title="River scene 2 after training" width="80%">
+      <img src="/pics/scene2_after_training.png" alt="Feature 2" title="River scene 2 after training" width="85%">
       <br><small>(d) After Training</small>
     </td>
   </tr>
@@ -58,7 +58,16 @@ Our proposed method demonstrates a good capability for target feature separation
 ***
 
 ### Improved Triplet Loss
-Suppose \( x_p \), \( x_n \), and \( x_a \) are positive samples, negative samples, and anchor samples, respectively. The cosine similarity between them is represented as:
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+
+<p>Suppose \( x_p \), \( x_n \), and \( x_a \) are positive samples, negative samples, and anchor samples, respectively. The cosine similarity between them is represented as:</p>
 
 \[
 d_{pn} = \text{cosine\_similarity}(x_p, x_n) = \frac{x_p \cdot x_n}{\|x_p\| \|x_n\|}
@@ -72,19 +81,19 @@ d_{pa} = \text{cosine\_similarity}(x_p, x_a) = \frac{x_p \cdot x_a}{\|x_p\| \|x_
 d_{an} = \text{cosine\_similarity}(x_a, x_n) = \frac{x_a \cdot x_n}{\|x_a\| \|x_n\|}
 \]
 
-The improved triplet loss is divided into two parts; the first part is the standard triplet loss. A larger margin, denoted as \( \text{margin2} \), is introduced to ensure that the similarity between the positive sample and the anchor is significantly higher than the similarity between the positive sample or the anchor and the negative sample:
+<p>The improved triplet loss is divided into two parts; the first part is the standard triplet loss. A larger margin, denoted as \( \text{margin2} \), is introduced to ensure that the similarity between the positive sample and the anchor is significantly higher than the similarity between the positive sample or the anchor and the negative sample:</p>
 
 \[
 \text{Loss}_{Triplet1} =  \max(d_{pn}, d_{an} - d_{pa} + \text{margin2})
 \]
 
-The second part of the loss is composed of \( \text{Loss}_{ap} \), \( \text{Loss}_{an} \), and \( \text{Loss}_{pn} \):
+<p>The second part of the loss is composed of \( \text{Loss}_{ap} \), \( \text{Loss}_{an} \), and \( \text{Loss}_{pn} \):</p>
 
 \[
 \text{Loss}_{ap} = \max(0, d_{pa} - \text{margin1} + \epsilon)
 \]
 
-This term aims to increase the lower bound of the similarity between the positive sample and the anchor by setting a small margin, denoted as \( \text{margin1} \):
+<p>This term aims to increase the lower bound of the similarity between the positive sample and the anchor by setting a small margin, denoted as \( \text{margin1} \):</p>
 
 \[
 \text{Loss}_{an} = \max(0, \text{margin2} - d_{an})
@@ -98,7 +107,11 @@ This term aims to increase the lower bound of the similarity between the positiv
 \text{Loss}_{Triplet2} =  \text{Loss}_{ap} + \text{Loss}_{an} + \text{Loss}_{pn}
 \]
 
-In summary, the improved triplet loss function effectively captures the complex relationships between samples by considering the relative similarities among the positive sample, anchor, and negative sample, while imposing distinct constraints and margins on these similarities. This approach is particularly effective in situations where subtle differences within the positive sample set are challenging to distinguish.
+<p>In summary, the improved triplet loss function effectively captures the complex relationships between samples by considering the relative similarities among the positive sample, anchor, and negative sample, while imposing distinct constraints and margins on these similarities. This approach is particularly effective in situations where subtle differences within the positive sample set are challenging to distinguish.</p>
+
+</body>
+</html>
+
 
 ***
 
