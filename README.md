@@ -1,5 +1,5 @@
 # Endmember-Guided Nonlinear Mapping Learning for Hyperspectral Nearshore Underwater Target Detection
------------
+
 This project was inspired by the following two papers, I applied them to underwater target detection in remote sensing hyperspectral imagery. Due to time constraints, this work was not published.
 > [1] *J. Jiao, Z. Gong and P. Zhong, Triplet Spectralwise Transformer Network for Hyperspectral Target Detection, in IEEE Transactions on Geoscience and Remote Sensing, vol. 61, pp. 1-17, 2023.*
 > 
@@ -84,7 +84,7 @@ $$
 Loss_{ap} = Max(0, d_{pa} - \text{margin1} + \epsilon)
 $$
 
-This term aims to increase the lower bound of the similarity between the positive sample and the anchor by setting a small margin, denoted as margin1:
+This term aims to increase the lower bound of the similarity between the positive sample and the anchor by setting a small margin, denoted as margin1. 
 
 $$
 Loss_{an} = Max(0, \text{margin2} - d_{an})
