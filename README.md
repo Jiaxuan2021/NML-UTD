@@ -1,5 +1,5 @@
 # Endmember-Guided Nonlinear Mapping Learning for Hyperspectral Nearshore Underwater Target Detection
-
+-----------
 This project was inspired by the following two papers, I applied them to underwater target detection in remote sensing hyperspectral imagery. Due to time constraints, this work was not published.
 > [1] *J. Jiao, Z. Gong and P. Zhong, Triplet Spectralwise Transformer Network for Hyperspectral Target Detection, in IEEE Transactions on Geoscience and Remote Sensing, vol. 61, pp. 1-17, 2023.*
 > 
@@ -58,7 +58,7 @@ Our proposed method demonstrates a good capability for target feature separation
 ***
 
 ### Improved Triplet Loss
-Suppose $x_{p}$, $x_{n}$, and $x_{a}$ are positive samples, negative samples, and anchor samples, respectively. The cosine similarity between them is represented as:
+Suppose $x_{p}$, $x_{n}$, and $x_{a}$ are positive samples, negative samples, and anchor samples respectively. The cosine similarity between them is represented as:
 
 $$
 d_{pn} = cosine similarity(x_{p}, x_{n}) = \frac{x_{p} \cdot x_{n}}{\|x_{p}\| \|x_{n}\|}
@@ -84,7 +84,7 @@ $$
 Loss_{ap} = Max(0, d_{pa} - \text{margin1} + \epsilon)
 $$
 
-This term aims to increase the lower bound of the similarity between the positive sample and the anchor by setting a small margin, denoted as margin1. 
+This term aims to increase the lower bound of the similarity between the positive sample and the anchor by setting a small margin, denoted as margin1.
 
 $$
 Loss_{an} = Max(0, \text{margin2} - d_{an})
@@ -99,6 +99,23 @@ Loss_{Triplet2} =  Loss_{ap} + Loss_{an} + Loss_{pn}
 $$
 
 In summary, the improved triplet loss function effectively captures the complex relationships between samples by considering the relative similarities among the positive sample, anchor, and negative sample, while imposing distinct constraints and margins on these similarities. This approach is particularly effective in situations where subtle differences within the positive sample set are challenging to distinguish.
+
+<p align="center">
+  <img src="/pics/p3_ablation_nml_l1.png" alt="RGB" title="RGB" width="550px"><br>
+  <b>(a)</b> RGB
+</p>
+<p align="center">
+  <img src="/pics/p3_ablation_nml_l4.png" alt="Ground truth" title="Ground truth" width="550px"><br>
+  <b>(b)</b> ground truth
+</p>
+<p align="center">
+  <img src="/pics/p3_ablation_loss.png" alt="Normal triplet loss" title="Normal triplet loss" width="550px"><br>
+  <b>(c)</b> using normal triplet loss
+</p>
+<p align="center">
+  <img src="/pics/p3_ablation_nml_l3.png" alt="Improved triplet loss" title="Improved triplet loss" width="550px"><br>
+  <b>(d)</b> using improved triplet loss
+</p>
 
 
 ***
